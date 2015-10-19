@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+  <!--ngcordova library-->
+  <script src="js/assets/ng-cordova.min.js"></script>
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
+
+  <!-- your app's js -->
+  <script src="js/app.js"></script>
+  <script src="js/services/picturefactory.js"></script>
+  <script src="js/controllers/picturectrl.js"></script>
+</head>
+
+<body ng-app="picApp">
+  <ion-pane>
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">PicApp</h1>
+    </ion-header-bar>
+    <ion-content ng-controller="pictureCtrl">
+      <div class="card">
+        <h4 class="padding">{{statusMessage}}</h4>
+      </div>
+      <div class="card">
+        <div ng-switch on="imageDefined">
+            <div ng-switch-when="false">
+              <img src="http://placehold.it/300x300" alt="" width="100%">
+            </div> 
+            <div ng-switch-when="true">
+              <img ng-src="{{imageSrc}}" alt="" height="" width="100%">
+            </div>          
+        </div>
+      </div>
+      <button class="button button-block button-outline button-positive ion-ios-camera-outline" ng-click="snapPicture()">
+      </button>
+    </ion-content>
+  </ion-pane>
+</body>
+
+</html>
